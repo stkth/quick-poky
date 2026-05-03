@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Steffen Kothe <steffen.kothe@skothe.net>
+
+header:
+  version: 21
+
+# Optionally provide keys to verify signed repositories
+signers:
+  YoctoBuildandRelease:
+    fingerprint: 2AFB13F28FBBB0D1B9DAF63087EB3D32FB631AD9
+    gpg_keyserver: keyserver.ubuntu.com
+
+repos:
+  bitbake:
+    url: https://github.com/openembedded/bitbake.git
+    tag: yocto-5.3.3
+    commit: 7af7e04f3adc8ba144d9e2e6b37ed4ddb3b59df0
+    signed: true
+    allowed_signers:
+      - YoctoBuildandRelease
+    # this repo does not provide any layers
+    path: sources/bitbake
+    layers: {}
+
+  core:
+    url: https://github.com/openembedded/openembedded-core.git
+    tag: yocto-5.3.3
+    commit: ab57471acad7ce2a037480dc7b301104620f1ebf
+    signed: true
+    allowed_signers:
+      - YoctoBuildandRelease
+    path: sources/openembedded-core
+    layers:
+      meta:
+
+  yocto:
+    url: https://git.yoctoproject.org/meta-yocto.git
+    tag: yocto-5.3.3
+    commit: 6fd8110c81ab3b8c0b14e43d6eaa1fd20a59158f
+    signed: true
+    allowed_signers:
+      - YoctoBuildandRelease
+    path: sources/meta-yocto
+    layers:
+      meta-poky:

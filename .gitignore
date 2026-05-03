@@ -1,0 +1,3 @@
+.config.yaml*
+.kas_gnupg/
+poky-build/

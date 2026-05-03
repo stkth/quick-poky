@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Steffen Kothe <steffen.kothe@skothe.net>
+
+menu "DISTRO"
+choice
+	prompt "Distro selection"
+	default POKY
+config POKY
+	bool "Poky Reference Distribution"
+endchoice
+config KAS_INCLUDE_DISTRO
+	string
+	default "kas/distro/poky.yaml" if POKY
+endmenu

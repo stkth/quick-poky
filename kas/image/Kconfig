@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Steffen Kothe <steffen.kothe@skothe.net>
+
+menu "IMAGE"
+
+choice
+	prompt "Image selection"
+	default CORE_IMAGE_MINIMAL
+
+config CORE_IMAGE_MINIMAL 
+	bool "Poky core minimal image"
+
+config CORE_IMAGE_FULL_CMDLINE
+	bool "Poky full image with command line"
+
+config CORE_IMAGE_MINIMAL_INITRAMFS
+	bool "Poky minimal initramfs image"
+
+config CORE_IMAGE_WESTON
+	bool "Poky image with weston graphical"
+
+endchoice
+
+config KAS_INCLUDE_IMAGE
+	string
+	default "kas/image/core-image-minimal.yaml" if CORE_IMAGE_MINIMAL
+	default "kas/image/core-image-full-cmdline.yaml" if CORE_IMAGE_FULL_CMDLINE
+	default "kas/image/core-image-minimal-initramfs.yaml" if CORE_IMAGE_MINIMAL_INITRAMFS
+	default "kas/image/core-image-weston.yaml" if CORE_IMAGE_WESTON
+endmenu

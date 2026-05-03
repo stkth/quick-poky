@@ -1,0 +1,4 @@
+header:
+  version: 21
+
+target: core-image-minimal-initramfs

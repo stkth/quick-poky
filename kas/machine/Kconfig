@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Steffen Kothe <steffen.kothe@skothe.net>
+
+menu "MACHINE"
+choice
+	prompt "Machine selection"
+	default QEMU_X86_64
+
+config QEMU_X86_64
+	bool "QEMU x86-64"
+
+config QEMU_RISCV_64
+	bool "QEMU RISC-V 64"
+
+config QEMU_RISCV_32
+	bool "QEMU RISC-V 32"
+
+config QEMU_ARM_64 
+	bool "QEMU ARM 64"
+
+config QEMU_ARM 
+	bool "QEMU ARM 32"
+
+endchoice
+config KAS_INCLUDE_TARGET
+	string
+	default "kas/machine/qemux86_64.yaml" if QEMU_X86_64
+	default "kas/machine/qemuriscv64.yaml" if QEMU_RISCV_64
+	default "kas/machine/qemuriscv32.yaml" if QEMU_RISCV_32
+	default "kas/machine/qemuarm64.yaml" if QEMU_ARM_64
+	default "kas/machine/qemuarm.yaml" if QEMU_ARM
+endmenu

@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: 2026 Steffen Kothe <steffen.kothe@skothe.net>
+
+mainmenu "Quick Yocto Poky Configuration"
+
+config KAS_INCLUDE_MAIN
+	string
+	default "kas/poky.yaml"
+
+config KAS_BUILD_SYSTEM
+	string
+	default "openembedded"
+
+source "kas/machine/Kconfig"
+source "kas/distro/Kconfig"
+source "kas/image/Kconfig"
